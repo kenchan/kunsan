@@ -1,0 +1,35 @@
+---
+import { marked } from 'marked';
+
+const response = await fetch("https://diary.shu-cream.net/graphql",
+  {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      query: `
+        query {
+          articles(first: 10) {
+            nodes {
+              title
+              body
+            }
+          }
+        }
+      `
+    })
+  }
+)
+
+const json = await response.json();
+const articles: Article[] = json.data.articles.nodes;
+---
+
+{articles.map((article) =>(
+  <>
+    <article>
+      <h1>{article.title}</h1>
+      <p set:html={marked.parse(article.body)}></p>
+    </article>
+  </>
+))}
+
