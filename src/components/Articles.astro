@@ -8,7 +8,7 @@ const response = await fetch("https://diary.shu-cream.net/graphql",
     body: JSON.stringify({
       query: `
         query {
-          articles(first: 10) {
+          articles(first: 12) {
             nodes {
               title
               body
@@ -24,12 +24,14 @@ const json = await response.json();
 const articles: Article[] = json.data.articles.nodes;
 ---
 
-{articles.map((article) =>(
-  <>
-    <article>
-      <h1>{article.title}</h1>
-      <p set:html={marked.parse(article.body)}></p>
-    </article>
-  </>
-))}
+<div class="grid lg:grid-cols-3">
+  {articles.map((article) =>(
+    <>
+      <div class="m-5 p-5 h-96 border rounded border-gray-200 shadow overflow-hidden">
+        <h1>{article.title}</h1>
+        <p set:html={marked.parse(article.body)}></p>
+      </div>
+    </>
+  ))}
+</div>
 
