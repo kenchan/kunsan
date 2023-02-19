@@ -14,6 +14,12 @@ const response = await fetch("https://diary.shu-cream.net/graphql",
               title
               body
             }
+            pageInfo {
+              hasPreviousPage
+              hasNextPage
+              startCursor
+              endCursor
+            }
           }
         }
       `
@@ -23,6 +29,7 @@ const response = await fetch("https://diary.shu-cream.net/graphql",
 
 const json = await response.json();
 const articles: Article[] = json.data.articles.nodes;
+const pageInfo: PageInfo = json.data.articles.pageInfo;
 ---
 
 {articles.map((article) =>(
@@ -36,12 +43,21 @@ const articles: Article[] = json.data.articles.nodes;
   </>
 ))}
 
+<div class="mb-10 p-5">
+  {pageInfo.hasPreviousPage && <a>新しいエントリへ</a>}
+  {pageInfo.hasNextPage && <a class="float-right" href={"/?after=" + pageInfo.endCursor}>古いエントリへ</a>}
+</div>
+
 <style is:global>
   p {
     @apply text-gray-700;
     @apply mb-4;
   }
   article a {
+    @apply underline;
+    @apply text-blue-800;
+  }
+  a {
     @apply underline;
     @apply text-blue-800;
   }
