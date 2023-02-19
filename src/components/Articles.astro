@@ -25,16 +25,16 @@ const json = await response.json();
 const articles: Article[] = json.data.articles.nodes;
 ---
 
-<div class="grid grid-cols-3 lg:grid-cols-4">
-  {articles.map((article) =>(
-    <>
-      <article class="m-5 p-5 h-96 border rounded border-gray-200 shadow overflow-hidden hover:bg-gray-100 hover:shadow-lg">
+{articles.map((article) =>(
+  <>
+    <article class="m-5 p-5 h-96 border rounded border-gray-200 shadow overflow-hidden">
+      <a href={"/" + article.title}>
         <h1 class="text-2xl mb-4 font-bold">{article.title}</h1>
-        <div set:html={DOMPurify.sanitize(marked.parse(article.body))}></div>
-      </article>
-    </>
-  ))}
-</div>
+      </a>
+      <div set:html={DOMPurify.sanitize(marked.parse(article.body))}></div>
+    </article>
+  </>
+))}
 
 <style is:global>
   p {
