@@ -1,8 +1,80 @@
 ---
+import { marked } from 'marked';
+import DOMPurify from 'isomorphic-dompurify';
 import Layout from '../layouts/Layout.astro';
-import Articles from '../components/Articles.astro';
+
+const before = Astro.url.searchParams.get('before');
+const after = Astro.url.searchParams.get('after');
+
+const query = (before != null) ?
+  `last: 12 before: "${before}"`
+  : (after != null) ?
+  `first: 12 after: "${after}"`
+  : "first: 12";
+
+const response = await fetch("https://diary.shu-cream.net/graphql",
+  {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      query: `
+        query {
+          articles(${query}) {
+            nodes {
+              title
+              body
+            }
+            pageInfo {
+              hasPreviousPage
+              hasNextPage
+              startCursor
+              endCursor
+            }
+          }
+        }
+      `
+    })
+  }
+)
+
+const json = await response.json();
+const articles: Article[] = json.data.articles.nodes;
+const pageInfo: PageInfo = json.data.articles.pageInfo;
 ---
 
-<Layout title="Welcome to Astro.">
-	<Articles></Articles>
+<Layout title="けんちゃんくんさんのWeb日記">
+  {articles.map((article) =>(
+    <>
+      <article class="m-5 p-5 h-96 border rounded border-gray-200 shadow overflow-hidden">
+        <a href={"/" + encodeURI(article.title)}>
+          <h1 class="text-2xl mb-4 font-bold">{article.title}</h1>
+        </a>
+        <div set:html={DOMPurify.sanitize(marked.parse(article.body))}></div>
+      </article>
+    </>
+  ))}
+
+  <div class="pager mb-10 p-5">
+    {pageInfo.hasPreviousPage && <a href={"/?before=" + pageInfo.startCursor}>新しい記事へ</a>}
+    {pageInfo.hasNextPage && <a class="float-right" href={"/?after=" + pageInfo.endCursor}>古い記事へ</a>}
+  </div>
 </Layout>
+
+<style is:global>
+  p {
+    @apply text-gray-700;
+    @apply mb-4;
+  }
+  article a {
+    @apply underline;
+    @apply text-blue-800;
+  }
+</style>
+
+<style>
+  .pager a {
+    @apply underline;
+    @apply text-blue-800;
+  }
+</style>
+

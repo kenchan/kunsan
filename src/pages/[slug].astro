@@ -5,6 +5,7 @@ import DOMPurify from 'isomorphic-dompurify';
 import Layout from '../layouts/Layout.astro';
 
 const { slug } = Astro.params;
+
 const response = await fetch("https://diary.shu-cream.net/graphql",
   {
     method: 'POST',
@@ -12,7 +13,7 @@ const response = await fetch("https://diary.shu-cream.net/graphql",
     body: JSON.stringify({
       query: `
         query {
-          article(slug: "${slug}") {
+          article(slug: "${slug?.replaceAll('"', '\\\"')}") {
             title
             body
           }
@@ -26,20 +27,41 @@ const json = await response.json();
 const article: Article = await json.data.article;
 ---
 
-<Layout title="Welcome to Astro.">
-  <article class="m-5 p-5 border rounded border-gray-200 shadow overflow-hidden">
-    <h1 class="text-2xl mb-4 font-bold">{article.title}</h1>
-    <div set:html={DOMPurify.sanitize(marked.parse(article.body))}></div>
+<Layout title={article.title + " - けんちゃんくんさんのWeb日記"}>
+  <article class="m-5 p-5 border rounded border-gray-200 shadow">
+    <h1 class="text-3xl mb-4 font-bold text-gray-700">{article.title}</h1>
+    <div set:html={marked.parse(article.body)}></div>
   </article>
 </Layout>
 
 <style is:global>
-  p {
-    @apply text-gray-700;
-    @apply mb-4;
+  article {
+    @apply text-gray-600;
   }
+
+  article h2 {
+    @apply text-2xl border-b-2 text-gray-700 mt-5;
+  }
+
+  article h3 {
+    @apply text-xl text-gray-700
+  }
+
+  article p {
+    @apply mt-4 mb-4;
+  }
+
   article a {
     @apply underline;
     @apply text-blue-800;
   }
+
+  article ul {
+    @apply list-disc list-inside ml-4;
+  }
+
+  article ol {
+    @apply list-decimal list-inside ml-4;
+  }
+
 </style>
