@@ -6,9 +6,9 @@ const before = Astro.url.searchParams.get('before');
 const after = Astro.url.searchParams.get('after');
 
 const query = (before != null) ?
-  `last: 12 before: "${before}"`
+  `last: 10 before: "${before}"`
   : (after != null) ?
-  `first: 12 after: "${after}"`
+  `first: 10 after: "${after}"`
   : "first: 12";
 
 const response = await fetch("https://diary.shu-cream.net/graphql",

@@ -4,6 +4,7 @@ import hljs from 'highlight.js'
 import 'highlight.js/styles/github.css';
 
 import Layout from '../layouts/Layout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
 
 const { slug } = Astro.params;
 
@@ -36,44 +37,5 @@ marked.setOptions({
 ---
 
 <Layout title={article.title + " - けんちゃんくんさんのWeb日記"}>
-  <article class="m-5 p-5 border rounded border-gray-200 shadow">
-    <h1 class="text-3xl mb-4 font-bold text-gray-700">{article.title}</h1>
-    <div set:html={marked.parse(article.body)}></div>
-  </article>
+  <ArticleCard title={article.title} body={article.body}></ArticleCard>
 </Layout>
-
-<style is:global>
-  article {
-    @apply text-gray-600;
-  }
-
-  article h2 {
-    @apply text-2xl border-b-2 text-gray-700 mt-5;
-  }
-
-  article h3 {
-    @apply text-xl text-gray-700
-  }
-
-  article p {
-    @apply mt-4 mb-4;
-  }
-
-  article a {
-    @apply underline;
-    @apply text-blue-800;
-    @apply break-words break-all;
-  }
-
-  article ul {
-    @apply list-disc list-inside ml-4;
-  }
-
-  article ol {
-    @apply list-decimal list-inside ml-4;
-  }
-
-  article pre > code {
-    @apply block bg-gray-100 p-4 rounded-xl overflow-x-auto;
-  }
-</style>
