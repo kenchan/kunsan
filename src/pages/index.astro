@@ -60,13 +60,38 @@ const pageInfo: PageInfo = json.data.articles.pageInfo;
 </Layout>
 
 <style is:global>
-  p {
-    @apply text-gray-700;
-    @apply mb-4;
+  article {
+    @apply text-gray-600;
   }
+
+  article h2 {
+    @apply text-2xl border-b-2 text-gray-700 mt-5;
+  }
+
+  article h3 {
+    @apply text-xl text-gray-700
+  }
+
+  article p {
+    @apply mt-4 mb-4;
+  }
+
   article a {
     @apply underline;
     @apply text-blue-800;
+    @apply break-words break-all;
+  }
+
+  article ul {
+    @apply list-disc list-inside ml-4;
+  }
+
+  article ol {
+    @apply list-decimal list-inside ml-4;
+  }
+
+  article pre > code {
+    @apply block bg-gray-100 p-4 rounded-xl overflow-x-auto;
   }
 </style>
 
