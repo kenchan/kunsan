@@ -1,6 +1,5 @@
 ---
 import { marked } from 'marked';
-import DOMPurify from 'isomorphic-dompurify';
 import Layout from '../layouts/Layout.astro';
 
 const before = Astro.url.searchParams.get('before');
@@ -49,7 +48,7 @@ const pageInfo: PageInfo = json.data.articles.pageInfo;
         <a href={"/" + encodeURI(article.title)}>
           <h1 class="text-2xl mb-4 font-bold">{article.title}</h1>
         </a>
-        <div set:html={DOMPurify.sanitize(marked.parse(article.body))}></div>
+        <div set:html={marked.parse(article.body)}></div>
       </article>
     </>
   ))}
