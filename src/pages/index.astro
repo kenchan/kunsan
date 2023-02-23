@@ -17,7 +17,7 @@ const pageInfo = articlesPage.pageInfo;
 <Layout title="けんちゃんくんさんのWeb日記">
   {articles.map((article) =>(
     <>
-      <article class="m-5 p-5 h-96 border rounded border-gray-200 shadow overflow-hidden">
+      <article class="m-5 p-5 h-96 border rounded border-gray-200 shadow overflow-hidden bg-gray-100">
         <a href={"/" + encodeURI(article.title)}>
           <h1 class="text-2xl mb-4 font-bold">{article.title}</h1>
         </a>
@@ -46,7 +46,7 @@ const pageInfo = articlesPage.pageInfo;
   }
 
   article p {
-    @apply mt-4 mb-4;
+    @apply mb-4 leading-7;
   }
 
   article a {
@@ -65,6 +65,10 @@ const pageInfo = articlesPage.pageInfo;
 
   article pre > code {
     @apply block bg-gray-100 p-4 rounded-xl overflow-x-auto;
+  }
+
+  article p img {
+    @apply mt-10 mb-10 rounded shadow-md;
   }
 </style>
 
