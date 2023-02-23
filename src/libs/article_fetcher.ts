@@ -17,7 +17,7 @@ interface ArticlesPage {
 }
 
 class ArticleFetcher {
-  ENDPOINT_URL = "https://diary.shu-cream.net/graphql";
+  ENDPOINT_URL = "https://note.kenchankunsan.com/graphql";
 
   constructor() { }
 
@@ -28,7 +28,7 @@ class ArticleFetcher {
         `first: ${num} after: "${after}"`
         : `first: ${num}`;
 
-    const response = await fetch("https://note.kenchankunsan.com/graphql",
+    const response = await fetch(this.ENDPOINT_URL,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
