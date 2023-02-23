@@ -11,5 +11,5 @@ export default defineConfig({
   integrations: [tailwind()],
   output: 'server',
   adapter: vercel(),
-  site: "https://kunsan.vercel.app/"
+  site: "https://diary.shu-cream.net/"
 });

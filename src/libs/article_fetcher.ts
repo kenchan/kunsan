@@ -28,7 +28,7 @@ class ArticleFetcher {
         `first: ${num} after: "${after}"`
         : `first: ${num}`;
 
-    const response = await fetch("https://diary.shu-cream.net/graphql",
+    const response = await fetch("https://note.kenchankunsan.com/graphql",
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
