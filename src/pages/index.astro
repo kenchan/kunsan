@@ -8,7 +8,7 @@ const after = Astro.url.searchParams.get('after');
 
 const fetcher = new ArticleFetcher();
 
-const articlesPage = await fetcher.fetchMultiple(before, after);
+const articlesPage = await fetcher.fetchMultiple(before! || '', after! || '');
 const articles = articlesPage.nodes;
 const pageInfo = articlesPage.pageInfo;
 

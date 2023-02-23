@@ -1,8 +1,3 @@
-interface ArticleFetcher {
-  fetch(slug: string): Promise<Article>;
-  fetchMultiple(before?: string | undefined, after?: string | undefined, num?: 10): Promise<ArticlesPage>;
-}
-
 interface Article {
   title: string;
   body: string;
@@ -26,10 +21,10 @@ class ArticleFetcher {
 
   constructor() { }
 
-  async fetchMultiple(before?, after?, num = 10): Promise<ArticlesPage> {
-    const query = (before !== null) ?
+  async fetchMultiple(before = '', after = '', num = 10): Promise<ArticlesPage> {
+    const query = (before !== '') ?
       `last: ${num} before: "${before}"`
-      : (after !== null) ?
+      : (after !== '') ?
         `first: ${num} after: "${after}"`
         : `first: ${num}`;
 
@@ -44,6 +39,7 @@ class ArticleFetcher {
                   nodes {
                     title
                     body
+                    publishedOn
                   }
                   pageInfo {
                     hasPreviousPage
@@ -59,12 +55,11 @@ class ArticleFetcher {
     )
 
     const json = await response.json();
-    const articlesPage: ArticlesPage = await json.data.articles;
+    const articlesPage: ArticlesPage = json.data.articles;
     return articlesPage;
   }
 
   async fetchOne(slug: string): Promise<Article> {
-
     const response = await fetch(this.ENDPOINT_URL,
       {
         method: 'POST',
