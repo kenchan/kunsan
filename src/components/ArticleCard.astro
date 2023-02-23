@@ -5,7 +5,6 @@ import hljs from 'highlight.js';
 const { title, body } = Astro.props;
 
 marked.setOptions({
-  async: true,
   highlight: (code, lang) => {
     return hljs.highlightAuto(code).value;
   }
