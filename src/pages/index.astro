@@ -1,44 +1,17 @@
 ---
 import { marked } from 'marked';
 import Layout from '../layouts/Layout.astro';
+import { ArticleFetcher } from '../libs/article_fetcher';
 
 const before = Astro.url.searchParams.get('before');
 const after = Astro.url.searchParams.get('after');
 
-const query = (before != null) ?
-  `last: 10 before: "${before}"`
-  : (after != null) ?
-  `first: 10 after: "${after}"`
-  : "first: 12";
+const fetcher = new ArticleFetcher();
 
-const response = await fetch("https://diary.shu-cream.net/graphql",
-  {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      query: `
-        query {
-          articles(${query}) {
-            nodes {
-              title
-              body
-            }
-            pageInfo {
-              hasPreviousPage
-              hasNextPage
-              startCursor
-              endCursor
-            }
-          }
-        }
-      `
-    })
-  }
-)
+const articlesPage = await fetcher.fetchMultiple(before, after);
+const articles = articlesPage.nodes;
+const pageInfo = articlesPage.pageInfo;
 
-const json = await response.json();
-const articles: Article[] = json.data.articles.nodes;
-const pageInfo: PageInfo = json.data.articles.pageInfo;
 ---
 
 <Layout title="けんちゃんくんさんのWeb日記">

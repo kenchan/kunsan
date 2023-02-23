@@ -5,28 +5,13 @@ import 'highlight.js/styles/github.css';
 
 import Layout from '../layouts/Layout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
+import { ArticleFetcher } from '../libs/article_fetcher';
 
 const { slug } = Astro.params;
 
-const response = await fetch("https://diary.shu-cream.net/graphql",
-  {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      query: `
-        query {
-          article(slug: "${slug?.replaceAll('"', '\\\"')}") {
-            title
-            body
-          }
-        }
-      `
-    })
-  }
-)
+const articleFetcher = new ArticleFetcher();
 
-const json = await response.json();
-const article: Article = await json.data.article;
+const article = await articleFetcher.fetchOne(slug!);
 
 marked.setOptions({
   async: true,
