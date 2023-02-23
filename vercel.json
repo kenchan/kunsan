@@ -1,0 +1,22 @@
+{
+  "headers": [
+    {
+      "source": "/rss.xml",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=0, s-maxage=3600, stale-while-revalidate=3600"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=0, s-maxage=300, stale-while-revalidate=300"
+        }
+      ]
+    }
+  ]
+}
