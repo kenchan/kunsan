@@ -2,6 +2,8 @@ interface Article {
   title: string;
   body: string;
   publishedOn: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 interface PageInfo {
@@ -70,6 +72,9 @@ class ArticleFetcher {
                 article(slug: "${slug?.replaceAll('"', '\\\"')}") {
                   title
                   body
+                  publishedOn
+                  createdAt
+                  updatedAt
                 }
               }
             `
