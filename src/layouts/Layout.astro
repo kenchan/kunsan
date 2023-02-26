@@ -14,6 +14,7 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="alternate" type="application/rss+xml" title="RSS" href="./rss.xml" />
+		<script src="https://kit.fontawesome.com/c44b5a19b3.js" crossorigin="anonymous"></script>
 
 		<title>{title}</title>
 
@@ -30,7 +31,7 @@ const { title } = Astro.props;
 			};
 		</script>
 	</head>
-	<body class="flex flex-col items-center h-screen bg-gray-200">
+	<body class="flex flex-col items-center bg-gray-200">
 		<header class="h-10 w-full bg-green-900 shadow">
 			<div class="pl-6 h-10 leading-10 text-xl text-gray-200 ">
 				<a href="/">
@@ -41,5 +42,31 @@ const { title } = Astro.props;
 		<div class="max-w-full lg:max-w-3xl">
 			<slot />
 		</div>
+		<footer class="w-full mt-3 mb-10 text-center justify-center flex flex-wrap grid-cols-3 text-gray-600">
+			<div class="w-20">
+				<a href="https://ruby.social/@kenchan">
+					<span class="fa-xl fa-brands fa-mastodon">Mastodon</span>
+				</a>
+			</div>
+			<div class="w-20">
+				<a href="https://twitter.com/kenchan">
+					<span class="fa-xl fa-brands fa-twitter">Twitter</span>
+				</a>
+			</div>
+			<div class="w-20">
+				<a href="https://github.com/kenchan">
+					<span class="fa-xl fa-brands fa-github">GitHub</span>
+				</a>
+			</div>
+			<div class="w-full mt-5">
+				<a href="/">diary.shu-cream.net</a>
+			</div>
+		</footer>
 	</body>
 </html>
+
+<style>
+	a {
+		@apply no-underline;
+	}
+</style>

@@ -29,7 +29,7 @@ const pageInfo = articlesPage.pageInfo;
     </>
   ))}
 
-  <div class="pager mb-10 p-5">
+  <div class="pager m-5 p-5">
     {pageInfo.hasPreviousPage && <a href={"/?before=" + pageInfo.startCursor}>新しい記事へ</a>}
     {pageInfo.hasNextPage && <a class="float-right" href={"/?after=" + pageInfo.endCursor}>古い記事へ</a>}
   </div>
