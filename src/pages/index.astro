@@ -18,6 +18,9 @@ const pageInfo = articlesPage.pageInfo;
   {articles.map((article) =>(
     <>
       <article class="m-5 p-5 h-96 border rounded border-gray-200 shadow overflow-hidden bg-gray-100">
+        <div class="text-sm text-gray-700">
+          {new Date(article.publishedOn).toLocaleDateString('ja-JP')}
+        </div>
         <h1 class="text-2xl mb-4 font-bold">
           <a href={"/" + encodeURI(article.title)}>
             {article.title}

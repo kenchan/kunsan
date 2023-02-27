@@ -1,9 +1,9 @@
 interface Article {
   title: string;
   body: string;
-  publishedOn: Date;
-  createdAt: Date;
-  updatedAt: Date;
+  publishedOn: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface PageInfo {
