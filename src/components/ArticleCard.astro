@@ -32,7 +32,7 @@ marked.setOptions({
   }
 
   article h2 {
-    @apply text-2xl border-b-2 text-gray-700 mt-5 mb-2;
+    @apply text-2xl border-b-2 text-gray-700 mt-8 mb-2;
   }
 
   article h3 {
@@ -40,7 +40,7 @@ marked.setOptions({
   }
 
   article p {
-    @apply mb-4 leading-7;
+    @apply mb-4 leading-8;
   }
 
   article a {
@@ -50,11 +50,16 @@ marked.setOptions({
   }
 
   article ul {
-    @apply list-disc list-inside ml-4;
+    @apply list-disc list-outside ml-10;
+
   }
 
   article ol {
-    @apply list-decimal list-inside ml-4;
+    @apply list-decimal list-outside ml-10;
+  }
+
+  article ol,ul li {
+    @apply leading-8;
   }
 
   article pre > code {
