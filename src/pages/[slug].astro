@@ -13,6 +13,8 @@ const articleFetcher = new ArticleFetcher();
 
 const article = await articleFetcher.fetchOne(slug!);
 
+const imageUrl = article.body.match(/!\[[\]]*\]\((https?:\/\/[^)]+)\)/)?.[1] ?? "";
+
 marked.setOptions({
   async: true,
   highlight: (code, lang) => {
@@ -21,6 +23,6 @@ marked.setOptions({
 })
 ---
 
-<Layout title={article.title + " - けんちゃんくんさんのWeb日記"}>
+<Layout title={article.title + " - けんちゃんくんさんのWeb日記"} slug={slug} imageUrl={imageUrl}>
   <ArticleCard article={article}></ArticleCard>
 </Layout>
