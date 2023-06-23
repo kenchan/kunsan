@@ -14,7 +14,7 @@ export const get = () => rss({
   items: articles.map((article) => ({
     link: "/" + encodeURI(article.title),
     title: article.title,
-    pubDate: article.publishedOn,
+    pubDate: new Date(article.publishedOn),
     content: marked.parse(article.body),
   }))
 })

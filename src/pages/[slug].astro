@@ -23,6 +23,6 @@ marked.setOptions({
 })
 ---
 
-<Layout title={article.title + " - けんちゃんくんさんのWeb日記"} slug={slug} imageUrl={imageUrl}>
+<Layout title={article.title + " - けんちゃんくんさんのWeb日記"} slug={slug as string} imageUrl={imageUrl}>
   <ArticleCard article={article}></ArticleCard>
 </Layout>
