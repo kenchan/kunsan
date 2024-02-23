@@ -1,0 +1,20 @@
+---
+title: 'ECミートアップvol.1'
+slug: 'ECミートアップvol.1'
+publishedOn: 2016-02-23
+createdAt: 2016-02-24 03:25:53 +0900
+updatedAt: 2016-02-24 03:28:04 +0900
+---
+![](https://lh3.googleusercontent.com/K2RF3f99aElNJajbkWU6tlzA1LQnPxjSs_ASQRu0NjZ_qD-8FUmqh42HxzOwhAmdeW8eEeaN50g9-XXseKHKzmFPD0n0lcasf3CN48-32DN056k8MODQffUazkHZYgMW1N_jdK_CDiG5mcegrNlT3hKBHHsI04by6friCa0XwRcej2rqGLtm4pNqzvMJzb5eSR3ieCuQp_sk8zEu22MR5d6siNL_QWzAFmM5ZM-nrSLJ2zGSP0-Pg-V9GjgG9-9MIMkKk_WuJs0dM7SedOpDSxge_cpwlKFmAQFFmU1L98A14RKRDVAVYiceEW5mcTK9k6-h53e2iFoSvkQrHorYvV0v_brFbbO-68_BjcG4OYjq8LoWW-0AaRv0G8cFooALIJDVcKrHJ3NzKach-nq57NPTfTdGVsDStZOPVbpdwL835Wpeq-d28nV62iahldU1XRhzs6fB0pyrpRTA0lg0jfx1eO0Nc1TNO6dyVSNXHLzePVruYnSmDn96xe0zY9Sd2HDNMiAmhrf9_3Yd_kHg4I3Jx9OGDM1RBtSu_wP34Vi8zkNX5Day9IAuRAFGwc-jSrA8NA=w400)
+
+[渋谷ECミートアップvol.1〜若手エンジニアが生み出す新たなECの世界〜 - connpass](https://pepabo.connpass.com/event/26708/)  というイベントで、LTの合間にうまいことを言う仕事をした。
+
+あんまりうまいこと言えなかったけど何事も練習と経験なので…
+
+こういうイベントのときに、毎回Twitterのハッシュタグをslackに通知するというのを作ったりお願いしたりしているので、いいかげんどこかに置いておこうと思って置き場を作った。 [kenchan/egos: Ego search tool](https://github.com/kenchan/egos)
+
+READMEもなにもないけど、TwitterのStream APIをひろってtakosanを経由してSlackに通知する。direnvでもろもろ設定すると以下のような通知がくる。
+
+![](https://lh3.googleusercontent.com/7KMmXg-06krv5udlORbcvrmD-EkZuf04pP89tklrDvrv4BIycQMOx-3PDeVK-e2j7aLAfo6ohIucAJq2qkB6L8CqOcyNMsvi6j25-APXZIm2uf5BDcyhxdD5AX-i8DGeJW88ZCEfXcDQx3tmWVNrvVz5CGwP-uMGewy6CO3C7x-XhvMYiGta8idITA-_94mJqsnjcEo5VYLU3TSo9cRTDK35BusYx_uoknH6uec7mVYdpxFJdpqctdVXZKCv1mCQ3tWz9aji1YXYbZt5Wp1oEJ18PVC8GiaCCgRiTLgBxKb_cwWrvUkrPdKgi9U9OX9tahT5cMRdCOpBwPEBFdcbyisf3zwSOSJv_jVukbWoF4JzyiJfVyykYmclD0QgxfIuI0VeG7OUXYxUiyVO2JgGjm3Y2tImvrSpc3oOX7vnEXk2GC1Vnjz4R-GPoDuc5hCFK4pCcpALntHU9BJG6EHxFBWFfrJNz86517aiReGOQZmdm9sesWNflkGXaPlNmajqRDjevy3BpCEsJdH4IU2bSZlAAGplB2LsKqo2ktz4N-5TkilihIPZ-NBCFkvRRx66-tQgMA=w600)
+
+よかったらご利用ください。

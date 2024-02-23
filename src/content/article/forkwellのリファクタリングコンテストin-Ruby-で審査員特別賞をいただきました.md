@@ -1,0 +1,18 @@
+---
+title: 'forkwellのリファクタリングコンテストin Ruby で審査員特別賞をいただきました'
+slug: 'forkwellのリファクタリングコンテストin-Ruby-で審査員特別賞をいただきました'
+publishedOn: 2016-02-16
+createdAt: 2016-02-16 14:22:49 +0900
+updatedAt: 2016-02-16 14:23:05 +0900
+---
+[リファクタリングコンテスト in Ruby 審査結果発表 - Grooves開発ブログ](https://tech.grooves.com/entry/2016/02/03/forkwell_refactoring_contest) という企画で審査員特別賞をいただきました。ありがとうございます。
+
+リファクタリングというからにはテストコードがないとだめだろうし、その過程も大切だし、個別の業務要件からある程度距離のあるコードというのが思いつかずになかなか手をつけられなかったところで、運営の方からお題のようなものが出されていました。これならやれそうだと一番簡単なコードをプロセス込みで応募してみたところ、いくつか自分ものを参考に作ってくださった方もいてとても嬉しく思っていました。
+
+審査員の方々からのコメントはどれも「なるほど」と思うものばかりで、承認欲求が満たされつつも、自分の足りないところがわかってとても勉強になりました。
+
+コンテストで受賞するとかいつ依頼だろうという感じなのですが、また機会があれば応募したいと思います。
+
+運営の皆さんありがとうございました。
+
+![](https://lh3.googleusercontent.com/9xdGY4hxCqJ2B2JshIRTb3N_gmrn_LhUiQ68HtuSF6L9K2gnj3Q44olrCj5xO5PqH74oZkbw0Bf9EbtgHIlbQtRXVKweJiGXQliEUFzFEEZtO4dKLd4A9lJnNnCAbkdvmv457HjlgS6ClcgNDChFbSqp7IiSzpFd2vDOIqlo1VORNVxY8fD-0gXSVPWVPwurLON4ovl8toI-oG0nNQ30fdQihJG0Y3Yv8oWgyBfpDPeW2IcbGKrMKmJoFPuMAxROaLOWRA0MJz7_yP0JtgC3MA4I1SXl-ezBj9TJgy9t8BTmUegVdRG8Lh1vHiqe43UwHgGhARE3YpPaI-XorRbhE284-8i3wBKa9PAzGs0cGRW8siGIZ5R3SsCZWo7YmnOWfzRDtpHnM3FbzHhAqfR4_kow5AmRVdhT7WQRMukBXYXQrcOIXc7vfAqSfhqWWTyMJR5bbGezVvnzrq0yPKly2tOIVlP9ipu6TqhyOcE_FstZ1xtyn7r-g2h0-mJ7ZG0HnexXJd-lkZOQjpV6OQc7IswTCl_wMyY3LpbqkoUZ3gAB3jWD0P17M1QI7EDK-ZaNSHsaWA=w442-h589-no)
