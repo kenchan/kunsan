@@ -1,0 +1,20 @@
+---
+export const prerender = true
+
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/Layout.astro';
+import Article from '../components/ArticleCard.astro'
+
+export async function getStaticPaths() {
+  const articleEntries = await getCollection('article');
+  return articleEntries.map(article => ({
+    params: { slug: article.slug }, props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+---
+
+<BaseLayout title={article.data.title + " - けんちゃんくんさんのWeb日記"} slug={article.data.title as string} imageUrl={article.data.imageUrl}>
+  <Article article={article} showHS={true} />
+</BaseLayout>

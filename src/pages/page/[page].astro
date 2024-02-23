@@ -1,8 +1,10 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import ArticleCard from "../../components/ArticleCard.astro";
+import { getCollection } from "astro:content";
 
 export const prerender = true;
+
 
 export function chunk<T extends any[]>(arr: T, size: number) {
   return arr.reduce((preArr: T[][], current, index) => {
@@ -15,7 +17,7 @@ export function chunk<T extends any[]>(arr: T, size: number) {
 }
 
 export async function getStaticPaths() {
-  const allArticles = await Astro.glob("../*.md");
+  const allArticles = await getCollection("article");
   const chunkedArticles = await chunk(allArticles, 10);
   return chunkedArticles.map((as, index) => {
     return {
@@ -35,13 +37,7 @@ const { articles } = Astro.props;
 
 <Layout title="けんちゃんくんさんのWeb日記" slug="" imageUrl="">
   {articles.map((article) => (
-    <ArticleCard
-      title={article.frontmatter.title}
-      body={article.compiledContent()}
-      publishedOn={article.frontmatter.publishedOn}
-      createdAt={article.frontmatter.createdAt}
-      updatedAt={article.frontmatter.updatedAt}
-    />
+    <ArticleCard article={article} showHS={false} />
   ))}
   <div class="pager m-5 p-5">
     {page > 1 && <a href={"/page/" + (page - 1).toString()}>新しい記事へ</a>}
