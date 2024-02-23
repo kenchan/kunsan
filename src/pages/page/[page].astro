@@ -5,7 +5,6 @@ import { getCollection } from "astro:content";
 
 export const prerender = true;
 
-
 export function chunk<T extends any[]>(arr: T, size: number) {
   return arr.reduce((preArr: T[][], current, index) => {
     if (index % size) {
@@ -17,7 +16,9 @@ export function chunk<T extends any[]>(arr: T, size: number) {
 }
 
 export async function getStaticPaths() {
-  const allArticles = await getCollection("article");
+  const allArticles = (await getCollection("article")).sort((a, b) => {
+    return a.data.publishedOn < b.data.publishedOn ? 1 : -1;
+  });
   const chunkedArticles = await chunk(allArticles, 10);
   return chunkedArticles.map((as, index) => {
     return {
@@ -40,14 +41,10 @@ const { articles } = Astro.props;
     <ArticleCard article={article} showHS={false} />
   ))}
   <div class="pager m-5 p-5">
-    {page > 1 && <a href={"/page/" + (page - 1).toString()}>新しい記事へ</a>}
-    {
-      page < 10 && (
-        <a class="float-right" href={"/page/" + (page + 1).toString()}>
-          古い記事へ
-        </a>
-      )
-    }
+    {<a href={page == 2 ? '/' : "/page/" + (page - 1).toString()}>新しい記事へ</a>}
+    <a class="float-right" href={"/page/" + (page + 1).toString()}>
+      古い記事へ
+    </a>
   </div>
 </Layout>
 

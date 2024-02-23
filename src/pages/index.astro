@@ -3,7 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import ArticleCard from "../components/ArticleCard.astro";
 import { getCollection } from "astro:content";
 
-const articles = (await getCollection("article")).slice(0, 10);
+const articles = (await getCollection("article")).sort((a, b) => {
+  return a.data.publishedOn < b.data.publishedOn ? 1 : -1;
+}).slice(0, 10);
 ---
 
 <Layout title="けんちゃんくんさんのWeb日記" slug="" imageUrl="">
