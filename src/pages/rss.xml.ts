@@ -1,20 +1,21 @@
 import rss from '@astrojs/rss';
 import { marked } from 'marked';
-import { ArticleFetcher } from '../libs/article_fetcher';
+import { getCollection } from "astro:content";
 
-const fetcher = new ArticleFetcher();
+export async function GET() {
+  const articles = (await getCollection("article")).sort((a, b) => {
+    return a.data.publishedOn < b.data.publishedOn ? 1 : -1;
+  }).slice(0, 10);
 
-const articlesPage = await fetcher.fetchMultiple();
-const articles = articlesPage.nodes;
-
-export const get = () => rss({
-  title: 'けんちゃんくんさんのWeb日記',
-  description: "kenchanの日々の記録",
-  site: import.meta.env.SITE,
-  items: articles.map((article) => ({
-    link: "/" + encodeURI(article.title),
-    title: article.title,
-    pubDate: new Date(article.publishedOn),
-    content: marked.parse(article.body),
-  }))
-})
+  return rss({
+    title: 'けんちゃんくんさんのWeb日記',
+    description: "kenchanの日々の記録",
+    site: import.meta.env.SITE,
+    items: articles.map((article) => ({
+      link: "/" + article.data.slug,
+      title: article.data.title,
+      pubDate: article.data.publishedOn,
+      content: marked.parse(article.body)
+    }))
+  })
+}
