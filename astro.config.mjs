@@ -13,5 +13,11 @@ export default defineConfig({
   adapter: vercel({
     analytics: true
   }),
-  site: "https://diary.shu-cream.net/"
+  site: "https://diary.shu-cream.net/",
+  markdown: {
+    shikiConfig: {
+      theme: 'github-light',
+      wrap: true,
+    }
+  }
 });
