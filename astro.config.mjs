@@ -1,14 +1,16 @@
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
+import sitemap from "@astrojs/sitemap";
+
+// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
+  integrations: [tailwind(), sitemap()],
   output: 'server',
   adapter: vercel({
     analytics: true
@@ -17,7 +19,7 @@ export default defineConfig({
   markdown: {
     shikiConfig: {
       theme: 'github-light',
-      wrap: true,
+      wrap: true
     }
   }
 });
